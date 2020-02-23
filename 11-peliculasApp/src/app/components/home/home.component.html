@@ -1,0 +1,13 @@
+<div class="jumbotron">
+    <h1 class="display-4">PeliculasApp</h1>
+    <p class="lead">App de películas para el curso de Angular</p>
+    <hr class="my-4">
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+</div>
+
+
+<div class="container">
+    <app-galeria [peliculas]="cartelera|slice:0:6" titulo="Cartelera"></app-galeria>
+    <app-galeria [peliculas]="populares|slice:0:6" titulo="Populares"></app-galeria>
+    <app-galeria [peliculas]="popularesNinos|slice:0:6" titulo="Populares Niños"></app-galeria>
+</div>

@@ -1,0 +1,84 @@
+<h4>Formularios <small>data</small></h4>
+<hr>
+<form [formGroup]="forma" (ngSubmit)="guardarCambios()" novalidate>
+
+    <div formGroupName="nombreCompleto">
+        <div class="form-group row" [ngClass]="{'has-danger': !forma.get('nombreCompleto.nombre').valid}">
+            <label class="col-2 col-form-label">Nombre</label>
+            <div class="col-8">
+                <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
+                <div class="form-control-feedback" *ngIf="forma.get('nombreCompleto.nombre').errors?.required">Campo
+                    necesario
+                </div>
+                <div class="form-control-feedback" *ngIf="forma.get('nombreCompleto.nombre').errors?.minlength">
+                    Caractres insuficientes
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Apellido</label>
+            <div class="col-8">
+                <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Correo</label>
+        <div class="col-md-8">
+            <input class="form-control" type="email" placeholder="Correo electrónico" formControlName="email">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Username</label>
+        <div class="col-md-8">
+            <input class="form-control" type="text" placeholder="Usuario" formControlName="username">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Password</label>
+        <div class="col-md-8">
+            <input class="form-control" type="password" placeholder="Password" formControlName="password1">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Repetir password</label>
+        <div class="col-md-8">
+            <input class="form-control" type="password" placeholder="Repetir password" formControlName="password2">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Pasatiempo</label>
+        <div class="col-md-8" formArrayName="pasatiempos">
+            <input *ngFor="let pasatiempo of forma.controls['pasatiempos'].controls; let i = index" class="form-control"
+                type="text" placeholder="pasatiempos" [formControlName]="i">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-8">
+            <button type="button" class="btn btn-primary" (click)="agregarPasatiempo()">
+                Nuevo pasatiempo
+            </button>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <div class="input-group col-md-8">
+            <button type="submit" class="btn btn-outline-primary">
+                Reset
+            </button>
+        </div>
+    </div>
+
+    {{forma.valid}}
+    <br>
+    {{forma.status}}
+
+</form>

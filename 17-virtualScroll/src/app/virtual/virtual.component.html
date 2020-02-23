@@ -1,0 +1,18 @@
+<h1>Virtual Scroll</h1>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <button (click)="irInicio()" class="btn btn-primary">Ir al inicio</button>
+    </div>
+    <div class="col">
+        <button (click)="irMedio()" class="btn btn-warning">Ir al medio</button>
+    </div>
+    <div class="col">
+        <button (click)="irFinal()" class="btn btn-success">Ir al final</button>
+    </div>
+</div>
+
+<cdk-virtual-scroll-viewport itemSize="50" class="example-viewport list-container list-group">
+    <div *cdkVirtualFor="let item of items" class="list-group-item">{{item}}</div>
+</cdk-virtual-scroll-viewport>
